@@ -1,0 +1,35 @@
+{
+  "entity": {
+    "sensor": {
+      "next_collection": {
+        "default": "mdi:calendar-clock"
+      },
+      "bins": {
+        "default": "mdi:delete"
+      },
+      "days_until_collection": {
+        "default": "mdi:timer-sand"
+      }
+    },
+    "binary_sensor": {
+      "recycling_week": {
+        "default": "mdi:recycle",
+        "state": {
+          "off": "mdi:recycle-variant"
+        }
+      },
+      "green_waste_week": {
+        "default": "mdi:leaf",
+        "state": {
+          "off": "mdi:leaf-off"
+        }
+      },
+      "bins_out": {
+        "default": "mdi:delete-empty",
+        "state": {
+          "on": "mdi:delete-alert"
+        }
+      }
+    }
+  }
+}

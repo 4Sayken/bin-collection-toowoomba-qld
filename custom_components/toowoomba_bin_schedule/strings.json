@@ -1,0 +1,54 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Find your property",
+        "description": "Type the start of your street address, for example \"3 Parsons\". The council only lists properties in the Toowoomba Region.",
+        "data": {
+          "search": "Address"
+        }
+      },
+      "select": {
+        "title": "Select your property",
+        "description": "Pick your address from the council's list. If it isn't shown, go back and type more of the address.",
+        "data": {
+          "address": "Property"
+        }
+      }
+    },
+    "error": {
+      "too_short": "Type at least 4 characters.",
+      "no_results": "The council has no property matching that address.",
+      "no_collection": "The council has no waste collection for that property.",
+      "cannot_connect": "Could not reach the Toowoomba Regional Council service. Try again later.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This property is already set up."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "next_collection": {
+        "name": "Next collection"
+      },
+      "bins": {
+        "name": "Bins"
+      },
+      "days_until_collection": {
+        "name": "Days until collection"
+      }
+    },
+    "binary_sensor": {
+      "recycling_week": {
+        "name": "Recycling week"
+      },
+      "green_waste_week": {
+        "name": "Green waste week"
+      },
+      "bins_out": {
+        "name": "Bins out"
+      }
+    }
+  }
+}
