@@ -33,7 +33,7 @@
       "bins_out": {
         "default": "mdi:delete-empty",
         "state": {
-          "on": "mdi:delete-alert"
+          "on": "mdi:weather-night"
         }
       }
     }

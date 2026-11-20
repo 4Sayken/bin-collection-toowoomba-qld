@@ -33,7 +33,7 @@
         "name": "Next collection"
       },
       "bins": {
-        "name": "Bins"
+        "name": "Bins to put out"
       },
       "days_until_collection": {
         "name": "Days until collection"
@@ -53,7 +53,7 @@
         "name": "Green waste week"
       },
       "bins_out": {
-        "name": "Bins out"
+        "name": "Bin night"
       }
     }
   }

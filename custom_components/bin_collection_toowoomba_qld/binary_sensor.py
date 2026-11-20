@@ -17,10 +17,9 @@ from .entity import ToowoombaBinEntity
 PARALLEL_UPDATES = 0
 
 
-def _bins_out(schedule: BinSchedule) -> bool:
-    """Bins belong on the kerb from the day before until collection day ends."""
-    today = dt_util.now().date()
-    return schedule.collection_date - timedelta(days=1) <= today <= schedule.collection_date
+def _bin_night(schedule: BinSchedule) -> bool:
+    """Bin night is the day before collection: the council asks for bins out the night before."""
+    return dt_util.now().date() == schedule.collection_date - timedelta(days=1)
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -41,7 +40,8 @@ BINARY_SENSORS: tuple[ToowoombaBinBinarySensorDescription, ...] = (
     ),
     ToowoombaBinBinarySensorDescription(
         key="bins_out",
-        is_on_fn=_bins_out,
+        # Key kept as "bins_out" so existing entities keep their IDs and history.
+        is_on_fn=_bin_night,
     ),
 )
 

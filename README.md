@@ -33,7 +33,7 @@ automations:
 - 📅 **When** the next collection is, and how many days away.
 - 🗑️ **Which bins** go out: general waste plus recycling or green waste.
 - ♻️ **The next recycling date** and 🌿 **the next green waste date**.
-- 🌙 **A "Bins out" switch** that's on the evening before and on collection day, for reminders.
+- 🌙 **A "Bin night" sensor** that's on the day before collection, for reminders.
 
 ## 🚀 Get Started
 
@@ -82,13 +82,13 @@ You can add several properties; each becomes its own device.
 | Entity | Type | What it shows |
 | --- | --- | --- |
 | Next collection | Sensor (date) | The next collection day |
-| Bins | Sensor | Which bins go out, e.g. `General waste & Recycling` |
+| Bins to put out | Sensor | Which bins go out at the next collection, e.g. `General waste & Recycling` |
 | Days until collection | Sensor | Days until the next collection (0 on the day) |
 | Next recycling | Sensor (date) | The next day recycling (yellow lid) is collected |
 | Next green waste | Sensor (date) | The next day green waste (green lid) is collected; unknown until the integration has seen green waste for your property |
 | Recycling week | Binary sensor | On when recycling goes out at the next collection |
 | Green waste week | Binary sensor | On when green waste goes out at the next collection |
-| Bins out | Binary sensor | On from the day before collection until the end of collection day |
+| Bin night | Binary sensor | On the day before collection (the council asks for bins out the night before); off at midnight |
 
 The **Next collection** sensor also has attributes for each bin, the council's
 own wording, and the bin image the council shows.
@@ -124,17 +124,14 @@ automation:
         at: "18:00:00"
     conditions:
       - condition: state
-        entity_id: binary_sensor.12_example_street_toowoomba_qld_4350_bins_out
+        entity_id: binary_sensor.12_example_street_toowoomba_qld_4350_bin_night
         state: "on"
-      - condition: numeric_state
-        entity_id: sensor.12_example_street_toowoomba_qld_4350_days_until_collection
-        above: 0
     actions:
       - action: notify.notify
         data:
           title: Bin night
           message: >
-            Put out: {{ states('sensor.12_example_street_toowoomba_qld_4350_bins') }}
+            Put out: {{ states('sensor.12_example_street_toowoomba_qld_4350_bins_to_put_out') }}
 ```
 
 Your entity IDs will match your own address.
