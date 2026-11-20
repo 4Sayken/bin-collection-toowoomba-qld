@@ -139,13 +139,6 @@ automation:
 
 Your entity IDs will match your own address.
 
-## ⬆️ Upgrading from "Toowoomba Bin Schedule"
-
-Version 1.1.0 renamed the integration (its internal ID changed from
-`toowoomba_bin_schedule` to `bin_collection_toowoomba_qld`), so it installs as a
-new integration. Remove the old **Toowoomba Bin Schedule** entry, then install
-this version and add your property again.
-
 ## ⚠️ Disclaimer
 
 This project isn't affiliated with or endorsed by Toowoomba Regional Council. It
