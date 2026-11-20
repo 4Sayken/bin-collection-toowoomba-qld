@@ -7,8 +7,12 @@ from homeassistant.core import HomeAssistant
 from homeassistant.data_entry_flow import FlowResultType
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.toowoomba_bin_schedule.api import AddressNotFound, CannotConnect
-from custom_components.toowoomba_bin_schedule.const import CONF_ADDRESS, CONF_GREEN_SERVICE, DOMAIN
+from custom_components.bin_collection_toowoomba_qld.api import AddressNotFound, CannotConnect
+from custom_components.bin_collection_toowoomba_qld.const import (
+    CONF_ADDRESS,
+    CONF_GREEN_SERVICE,
+    DOMAIN,
+)
 
 from .conftest import ADDRESS
 

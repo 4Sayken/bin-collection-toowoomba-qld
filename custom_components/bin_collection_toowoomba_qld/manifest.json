@@ -1,0 +1,12 @@
+{
+  "domain": "bin_collection_toowoomba_qld",
+  "name": "Bin Collection Toowoomba QLD",
+  "codeowners": ["@4Sayken"],
+  "config_flow": true,
+  "documentation": "https://github.com/4Sayken/bin-collection-toowoomba-qld",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/4Sayken/bin-collection-toowoomba-qld/issues",
+  "requirements": [],
+  "version": "1.1.0"
+}

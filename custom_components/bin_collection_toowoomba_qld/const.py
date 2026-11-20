@@ -1,8 +1,8 @@
-"""Constants for Toowoomba Bin Schedule."""
+"""Constants for Bin Collection Toowoomba QLD."""
 
 from datetime import timedelta
 
-DOMAIN = "toowoomba_bin_schedule"
+DOMAIN = "bin_collection_toowoomba_qld"
 ATTRIBUTION = "Data provided by Toowoomba Regional Council"
 
 CONF_ADDRESS = "address"

@@ -1,4 +1,4 @@
-"""Sensors for Toowoomba Bin Schedule."""
+"""Sensors for Bin Collection Toowoomba QLD."""
 
 from __future__ import annotations
 
@@ -40,6 +40,16 @@ SENSORS: tuple[ToowoombaBinSensorDescription, ...] = (
         key="days_until_collection",
         native_unit_of_measurement=UnitOfTime.DAYS,
         value_fn=lambda s: (s.collection_date - dt_util.now().date()).days,
+    ),
+    ToowoombaBinSensorDescription(
+        key="next_recycling",
+        device_class=SensorDeviceClass.DATE,
+        value_fn=lambda s: s.next_recycling,
+    ),
+    ToowoombaBinSensorDescription(
+        key="next_green_waste",
+        device_class=SensorDeviceClass.DATE,
+        value_fn=lambda s: s.next_green_waste,
     ),
 )
 

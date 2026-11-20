@@ -1,5 +1,5 @@
 {
-  "name": "Toowoomba Bin Schedule",
+  "name": "Bin Collection Toowoomba QLD",
   "homeassistant": "2025.3.0",
   "country": ["AU"],
   "render_readme": true

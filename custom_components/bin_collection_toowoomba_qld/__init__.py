@@ -1,4 +1,4 @@
-"""The Toowoomba Bin Schedule integration."""
+"""The Bin Collection Toowoomba QLD integration."""
 
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ PLATFORMS: list[Platform] = [Platform.BINARY_SENSOR, Platform.SENSOR]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ToowoombaBinConfigEntry) -> bool:
-    """Set up Toowoomba Bin Schedule from a config entry."""
+    """Set up Bin Collection Toowoomba QLD from a config entry."""
     coordinator = ToowoombaBinCoordinator(hass, entry)
     await coordinator.async_config_entry_first_refresh()
     entry.runtime_data = coordinator

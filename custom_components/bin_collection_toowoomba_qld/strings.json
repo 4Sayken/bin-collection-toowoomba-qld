@@ -37,6 +37,12 @@
       },
       "days_until_collection": {
         "name": "Days until collection"
+      },
+      "next_recycling": {
+        "name": "Next recycling"
+      },
+      "next_green_waste": {
+        "name": "Next green waste"
       }
     },
     "binary_sensor": {

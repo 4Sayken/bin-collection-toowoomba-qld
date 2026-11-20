@@ -1,4 +1,4 @@
-"""Fixtures for Toowoomba Bin Schedule tests."""
+"""Fixtures for Bin Collection Toowoomba QLD tests."""
 
 from collections.abc import Generator
 from datetime import date
@@ -6,7 +6,7 @@ from unittest.mock import AsyncMock, patch
 
 import pytest
 
-from custom_components.toowoomba_bin_schedule.api import BinCollection
+from custom_components.bin_collection_toowoomba_qld.api import BinCollection
 
 ADDRESS = "3 Parsons Street RANGEVILLE QLD 4350"
 
@@ -31,11 +31,11 @@ def mock_api() -> Generator[AsyncMock]:
     api.get_collection.return_value = GREEN_WEEK
     with (
         patch(
-            "custom_components.toowoomba_bin_schedule.config_flow.ToowoombaBinApi",
+            "custom_components.bin_collection_toowoomba_qld.config_flow.ToowoombaBinApi",
             return_value=api,
         ),
         patch(
-            "custom_components.toowoomba_bin_schedule.coordinator.ToowoombaBinApi",
+            "custom_components.bin_collection_toowoomba_qld.coordinator.ToowoombaBinApi",
             return_value=api,
         ),
     ):

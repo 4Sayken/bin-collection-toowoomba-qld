@@ -1,4 +1,4 @@
-# Toowoomba Bin Schedule
+# Bin Collection Toowoomba QLD
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://hacs.xyz)
 
@@ -13,24 +13,24 @@ tool, so you don't need to visit the website each week.
 
 ### HACS (recommended)
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=4Sayken&repository=toowoomba-bin-schedule&category=integration)
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=4Sayken&repository=bin-collection-toowoomba-qld&category=integration)
 
 1. In HACS, open the menu (⋮) → **Custom repositories**.
-2. Add `https://github.com/4Sayken/toowoomba-bin-schedule` with the
+2. Add `https://github.com/4Sayken/bin-collection-toowoomba-qld` with the
    type **Integration**.
-3. Search for **Toowoomba Bin Schedule**, download it and restart Home Assistant.
+3. Search for **Bin Collection Toowoomba QLD**, download it and restart Home Assistant.
 
 ### Manual
 
-Copy `custom_components/toowoomba_bin_schedule` into your Home Assistant
+Copy `custom_components/bin_collection_toowoomba_qld` into your Home Assistant
 `config/custom_components` folder and restart.
 
 ## Setup
 
-[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=toowoomba_bin_schedule)
+[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=bin_collection_toowoomba_qld)
 
 1. Go to **Settings → Devices & services → Add integration** and pick
-   **Toowoomba Bin Schedule**.
+   **Bin Collection Toowoomba QLD**.
 2. Type the start of your street address (for example `3 Parsons`).
 3. Pick your property from the council's list.
 
@@ -43,6 +43,8 @@ You can add several properties; each becomes its own device.
 | Next collection | Sensor (date) | The next collection day |
 | Bins | Sensor | Which bins go out, e.g. `General waste & Recycling` |
 | Days until collection | Sensor | Days until the next collection (0 on the day) |
+| Next recycling | Sensor (date) | The next day recycling (yellow lid) is collected |
+| Next green waste | Sensor (date) | The next day green waste (green lid) is collected; unknown until the integration has seen green waste for your property |
 | Recycling week | Binary sensor | On when recycling (yellow lid) goes out |
 | Green waste week | Binary sensor | On when green waste (green lid) goes out |
 | Bins out | Binary sensor | On from the day before collection until the end of collection day |
@@ -61,6 +63,13 @@ rolled forward like this, the `estimated` attribute is `true`; it returns to
 Green waste is an optional council service. The integration remembers once it
 has seen green waste for your property, so if you set it up during a recycling
 week, green waste weeks are only predicted after the council shows one.
+
+## Upgrading from "Toowoomba Bin Schedule"
+
+Version 1.1.0 renamed the integration (its internal ID changed from
+`toowoomba_bin_schedule` to `bin_collection_toowoomba_qld`), so it installs as a
+new integration. Remove the old **Toowoomba Bin Schedule** entry and its HACS
+repository, then install this one and add your property again.
 
 ## Example automation
 

@@ -9,8 +9,12 @@ from homeassistant.core import HomeAssistant
 import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry, async_fire_time_changed
 
-from custom_components.toowoomba_bin_schedule.api import BinCollection, CannotConnect
-from custom_components.toowoomba_bin_schedule.const import CONF_ADDRESS, CONF_GREEN_SERVICE, DOMAIN
+from custom_components.bin_collection_toowoomba_qld.api import BinCollection, CannotConnect
+from custom_components.bin_collection_toowoomba_qld.const import (
+    CONF_ADDRESS,
+    CONF_GREEN_SERVICE,
+    DOMAIN,
+)
 
 from .conftest import ADDRESS
 
@@ -62,6 +66,8 @@ async def test_rolls_forward_after_collection(hass: HomeAssistant, mock_api: Asy
     assert hass.states.get(f"sensor.{PREFIX}_bins").state == "General waste & Recycling"
     assert hass.states.get(f"binary_sensor.{PREFIX}_bins_out").state == "off"
     assert hass.states.get(f"sensor.{PREFIX}_next_collection").attributes["estimated"] is True
+    assert hass.states.get(f"sensor.{PREFIX}_next_recycling").state == "2026-11-24"
+    assert hass.states.get(f"sensor.{PREFIX}_next_green_waste").state == "2026-12-01"
 
 
 @pytest.mark.freeze_time("2026-11-23 00:00:30+10:00")

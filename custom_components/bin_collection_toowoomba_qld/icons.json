@@ -9,6 +9,12 @@
       },
       "days_until_collection": {
         "default": "mdi:timer-sand"
+      },
+      "next_recycling": {
+        "default": "mdi:recycle"
+      },
+      "next_green_waste": {
+        "default": "mdi:leaf"
       }
     },
     "binary_sensor": {

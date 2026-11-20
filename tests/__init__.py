@@ -1,1 +1,1 @@
-"""Tests for Toowoomba Bin Schedule."""
+"""Tests for Bin Collection Toowoomba QLD."""

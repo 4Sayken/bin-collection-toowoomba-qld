@@ -1,4 +1,4 @@
-"""Config flow for Toowoomba Bin Schedule."""
+"""Config flow for Bin Collection Toowoomba QLD."""
 
 from __future__ import annotations
 

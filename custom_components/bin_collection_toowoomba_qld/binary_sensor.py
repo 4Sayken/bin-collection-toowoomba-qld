@@ -1,4 +1,4 @@
-"""Binary sensors for Toowoomba Bin Schedule."""
+"""Binary sensors for Bin Collection Toowoomba QLD."""
 
 from __future__ import annotations
 

@@ -4,12 +4,12 @@ from datetime import date
 
 import pytest
 
-from custom_components.toowoomba_bin_schedule.api import (
+from custom_components.bin_collection_toowoomba_qld.api import (
     AddressNotFound,
     BinCollection,
     _parse_collection,
 )
-from custom_components.toowoomba_bin_schedule.coordinator import build_schedule
+from custom_components.bin_collection_toowoomba_qld.coordinator import build_schedule
 
 # Copied from a live council response on 2026-11-20.
 COUNCIL_HTML = (
@@ -72,3 +72,22 @@ def test_build_schedule(collection, today, green_service, expected) -> None:
     s = build_schedule(collection, today, green_service)
     assert (s.collection_date, s.recycling, s.green_waste, s.estimated) == expected
     assert s.general_waste
+
+
+@pytest.mark.parametrize(
+    ("collection", "today", "green_service", "next_recycling", "next_green"),
+    [
+        # Green week coming up: recycling is the week after.
+        (GREEN, date(2026, 11, 16), False, date(2026, 11, 24), date(2026, 11, 17)),
+        # Recycling week coming up: green waste the week after.
+        (RECYCLE, date(2026, 11, 16), True, date(2026, 11, 17), date(2026, 11, 24)),
+        # Rolled forward from a green week.
+        (GREEN, date(2026, 11, 20), True, date(2026, 11, 24), date(2026, 12, 1)),
+        # No green service known: no green date.
+        (RECYCLE, date(2026, 11, 20), False, date(2026, 12, 1), None),
+    ],
+)
+def test_next_bin_dates(collection, today, green_service, next_recycling, next_green) -> None:
+    s = build_schedule(collection, today, green_service)
+    assert s.next_recycling == next_recycling
+    assert s.next_green_waste == next_green

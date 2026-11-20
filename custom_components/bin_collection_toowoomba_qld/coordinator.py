@@ -1,4 +1,4 @@
-"""Data coordinator for Toowoomba Bin Schedule."""
+"""Data coordinator for Bin Collection Toowoomba QLD."""
 
 from __future__ import annotations
 
@@ -33,6 +33,23 @@ class BinSchedule:
     council_description: str
     council_date: date
     image_url: str | None
+    green_service: bool
+
+    @property
+    def next_recycling(self) -> date:
+        """Recycling alternates fortnightly, so it is this collection or the next."""
+        if self.recycling:
+            return self.collection_date
+        return self.collection_date + timedelta(weeks=1)
+
+    @property
+    def next_green_waste(self) -> date | None:
+        """Green waste runs on the weeks recycling doesn't, for properties with the service."""
+        if self.green_waste:
+            return self.collection_date
+        if self.green_service:
+            return self.collection_date + timedelta(weeks=1)
+        return None
 
     @property
     def bins(self) -> list[str]:
@@ -70,6 +87,7 @@ def build_schedule(collection: BinCollection, today: date, green_service: bool) 
             council_description=collection.description,
             council_date=council_date,
             image_url=collection.image_url,
+            green_service=green_service or collection.green_waste,
         )
 
     weeks = -(-(today - council_date).days // 7)
@@ -86,6 +104,7 @@ def build_schedule(collection: BinCollection, today: date, green_service: bool) 
         council_description=collection.description,
         council_date=council_date,
         image_url=collection.image_url,
+        green_service=green_service,
     )
 
 

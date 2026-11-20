@@ -1,4 +1,4 @@
-"""Base entity for Toowoomba Bin Schedule."""
+"""Base entity for Bin Collection Toowoomba QLD."""
 
 from __future__ import annotations
 
