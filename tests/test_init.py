@@ -89,11 +89,12 @@ async def test_midnight_refresh_turns_on_bin_night(
     assert hass.states.get(f"binary_sensor.{PREFIX}_bin_night").state == "on"
     calls = mock_api.get_collection.await_count
 
-    # Just after midnight on collection day: refreshed, and bin night is over.
+    # Just after midnight on collection day: bin night is over, worked out from
+    # the saved reading without contacting the council.
     freezer.move_to("2026-11-24 00:01:00+10:00")
     async_fire_time_changed(hass)
     await hass.async_block_till_done()
-    assert mock_api.get_collection.await_count > calls
+    assert mock_api.get_collection.await_count == calls
     assert hass.states.get(f"binary_sensor.{PREFIX}_bin_night").state == "off"
 
 

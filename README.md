@@ -27,13 +27,15 @@
 Toowoomba Regional Council's
 [Find your bin day](https://www.tr.qld.gov.au/Waste-and-water/Waste-and-recycling/Your-waste-bins-%e2%80%93-general-recycling-and-green-waste#section-2)
 tool tells you this week's collection. This integration does the same lookup for
-you every few hours and turns it into sensors you can put on a dashboard or use in
-automations:
+you once a month (or whenever you press a button) and turns it into sensors you
+can put on a dashboard or use in automations:
 
 - 📅 **When** the next collection is, and how many days away.
 - 🗑️ **Which bins** go out: general waste plus recycling or green waste.
 - ♻️ **The next recycling date** and 🌿 **the next green waste date**.
 - 🌙 **A "Bin night" sensor** that's on the day before collection, for reminders.
+- 🔍 **A "Check for changes" button** that checks the council's site straight away
+  and tells you if your collection has changed.
 
 ## 🚀 Get Started
 
@@ -89,6 +91,9 @@ You can add several properties; each becomes its own device.
 | Recycling week | Binary sensor | On when recycling goes out at the next collection |
 | Green waste week | Binary sensor | On when green waste goes out at the next collection |
 | Bin night | Binary sensor | On the day before collection (the council asks for bins out the night before); off at midnight |
+| Check for changes | Button | Checks the council's site now; see [How often it checks](#-how-often-it-checks) |
+| Last checked | Sensor (timestamp, diagnostic) | When the council's site was last checked successfully |
+| Last changed | Sensor (timestamp, diagnostic) | When a check last found the next collection different from what was expected |
 
 The **Next collection** sensor also has attributes for each bin, the council's
 own wording, and the bin image the council shows.
@@ -98,8 +103,9 @@ own wording, and the bin image the council shows.
 The council's tool shows *this week's* collection, even after that day has
 passed. Once it has, this integration rolls the date forward a week and swaps
 recycling and green waste, since they alternate fortnightly. While a date is
-rolled forward like this, the `estimated` attribute is `true`; it returns to
-`false` as soon as the council publishes the new week.
+rolled forward like this, the `estimated` attribute is `true`. It's `false` only
+while the saved reading is itself the upcoming collection, which with monthly
+checks is mostly just after a check.
 
 Green waste is an optional council service. The integration remembers once it
 has seen green waste for your property, so if you set it up during a recycling
@@ -107,10 +113,25 @@ week, green waste dates are only predicted after the council shows one.
 
 ## 🔄 How often it checks
 
-The integration looks up your property every **6 hours** and again just after
-**midnight**, so date-based sensors roll over on time. Each check starts fresh
-from what the council's website shows, so any change the council makes (a
-holiday shift, a new week) is picked up at the next check.
+The integration checks the council's site **once a month, early on the 1st**
+(each property at its own minute between 4 and 5 am, so installs don't all hit
+the council at once). The reading is saved, so restarting Home Assistant doesn't
+trigger another check. Between checks, the saved reading is rolled forward each
+day just after midnight, without contacting the council.
+
+If a monthly check fails (or Home Assistant was off on the 1st), the integration
+keeps using the saved reading and tries again each day until a check succeeds
+that month.
+
+Because collections alternate fortnightly, the prediction stays right unless the
+council changes something, such as a public holiday shift. To check sooner,
+press **Check for changes** on the property's device page (or call
+`button.press` from an automation). It checks the council's site straight away
+and, if the next collection is different from what the integration expected,
+shows a notification in Home Assistant naming the property and what changed.
+If nothing changed, it updates **Last checked** quietly.
+
+Each property you add has its own saved reading, button and notifications.
 
 ## 🤖 Example automation
 
