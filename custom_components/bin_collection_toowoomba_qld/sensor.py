@@ -4,11 +4,11 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, datetime
 from typing import Any
 
 from homeassistant.components.sensor import SensorDeviceClass, SensorEntity, SensorEntityDescription
-from homeassistant.const import UnitOfTime
+from homeassistant.const import EntityCategory, UnitOfTime
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.util import dt as dt_util
@@ -23,7 +23,7 @@ PARALLEL_UPDATES = 0
 class ToowoombaBinSensorDescription(SensorEntityDescription):
     """Describes a bin schedule sensor."""
 
-    value_fn: Callable[[BinSchedule], date | int | str | None]
+    value_fn: Callable[[BinSchedule], date | datetime | int | str | None]
 
 
 SENSORS: tuple[ToowoombaBinSensorDescription, ...] = (
@@ -50,6 +50,18 @@ SENSORS: tuple[ToowoombaBinSensorDescription, ...] = (
         key="next_green_waste",
         device_class=SensorDeviceClass.DATE,
         value_fn=lambda s: s.next_green_waste,
+    ),
+    ToowoombaBinSensorDescription(
+        key="last_checked",
+        device_class=SensorDeviceClass.TIMESTAMP,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        value_fn=lambda s: s.last_checked,
+    ),
+    ToowoombaBinSensorDescription(
+        key="last_changed",
+        device_class=SensorDeviceClass.TIMESTAMP,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        value_fn=lambda s: s.last_changed,
     ),
 )
 
@@ -78,7 +90,7 @@ class ToowoombaBinSensor(ToowoombaBinEntity, SensorEntity):
         self.entity_description = description
 
     @property
-    def native_value(self) -> date | int | str | None:
+    def native_value(self) -> date | datetime | int | str | None:
         return self.entity_description.value_fn(self.coordinator.data)
 
     @property

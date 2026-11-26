@@ -15,6 +15,17 @@
       },
       "next_green_waste": {
         "default": "mdi:leaf"
+      },
+      "last_checked": {
+        "default": "mdi:clock-check-outline"
+      },
+      "last_changed": {
+        "default": "mdi:calendar-alert"
+      }
+    },
+    "button": {
+      "check_now": {
+        "default": "mdi:cloud-refresh"
       }
     },
     "binary_sensor": {

@@ -43,6 +43,17 @@
       },
       "next_green_waste": {
         "name": "Next green waste"
+      },
+      "last_checked": {
+        "name": "Last checked"
+      },
+      "last_changed": {
+        "name": "Last changed"
+      }
+    },
+    "button": {
+      "check_now": {
+        "name": "Check for changes"
       }
     },
     "binary_sensor": {
