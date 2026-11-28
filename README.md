@@ -5,7 +5,7 @@
 <h1 align="center">Bin Collection Toowoomba QLD</h1>
 
 <p align="center">
-  <a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=4Sayken&repository=bin-collection-toowoomba-qld&category=integration"><img src="https://img.shields.io/badge/Marketplace-Custom-41BDF5" alt="Marketplace: Custom"></a>
+  <a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=4Sayken&repository=bin-collection-toowoomba-qld&category=integration"><img src="https://img.shields.io/badge/Marketplace-Default-41BDF5" alt="Marketplace: Default"></a>
   <a href="https://github.com/4Sayken/bin-collection-toowoomba-qld/releases"><img src="https://img.shields.io/github/v/release/4Sayken/bin-collection-toowoomba-qld" alt="Release"></a>
   <a href="https://github.com/4Sayken/bin-collection-toowoomba-qld/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/4Sayken/bin-collection-toowoomba-qld/validate.yml?branch=main&label=validation" alt="Validation"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/4Sayken/bin-collection-toowoomba-qld" alt="License"></a>
@@ -44,29 +44,54 @@ can put on a dashboard or use in automations:
 > **Marketplace**, under **Settings → Marketplace**. On older versions (2025.3 to
 > 2026.10) you install HACS separately. Follow the steps for your version below.
 
-**Add it to Home Assistant through the Marketplace or, before 2026.11, HACS:**
+**Bin Collection Toowoomba QLD is in the Marketplace's default catalog**, so you
+can find it by searching; no custom repository or GitHub account is needed.
 
 [![Open your Home Assistant instance and open this repository in the Marketplace.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=4Sayken&repository=bin-collection-toowoomba-qld&category=integration)
 
-The button above opens this repository in your Home Assistant. To do it by hand:
+The button above opens it in your Home Assistant. To do it by hand:
 
 **Home Assistant 2026.11 or newer (Marketplace)**
 
 1. Open **Settings → Marketplace** and accept its first-run warning if asked.
-2. Connect your GitHub account when prompted; the Marketplace needs it for custom repositories.
-3. Open the menu (⋮) → **Custom repositories**, add
-   `https://github.com/4Sayken/bin-collection-toowoomba-qld` with the type **Integration**.
-4. Search for **Bin Collection Toowoomba QLD**, select **Install**, then restart Home Assistant.
+2. Search for **Bin Collection Toowoomba QLD** and open it.
+3. Select **Install**, then restart Home Assistant.
 
 **Home Assistant 2025.3 to 2026.10 (HACS)**
 
-1. In **HACS**, open the menu (⋮) → **Custom repositories**.
-2. Add `https://github.com/4Sayken/bin-collection-toowoomba-qld` with the type **Integration**.
-3. Search for **Bin Collection Toowoomba QLD**, select **Download**, then restart Home Assistant.
+1. Open **HACS** and search for **Bin Collection Toowoomba QLD**.
+2. Open it, select **Download**, then restart Home Assistant.
 
-**Manual install (no Marketplace or HACS):** copy
+Updates appear in the Marketplace (or HACS) like any other, and as an update in
+**Settings → Updates**.
+
+<details>
+<summary><strong>Other ways to install</strong></summary>
+
+**As a custom repository.** Only needed if the integration doesn't show up when
+you search, for example if your Marketplace or HACS hasn't refreshed its catalog yet.
+
+- *Home Assistant 2026.11 or newer:* open **Settings → Marketplace**, connect
+  your GitHub account when prompted (the Marketplace needs it for custom
+  repositories), then open the menu (⋮) → **Custom repositories** and add
+  `https://github.com/4Sayken/bin-collection-toowoomba-qld` with the type
+  **Integration**. Search for **Bin Collection Toowoomba QLD**, select
+  **Install**, then restart Home Assistant.
+- *Home Assistant 2025.3 to 2026.10:* in **HACS**, open the menu (⋮) →
+  **Custom repositories**, add
+  `https://github.com/4Sayken/bin-collection-toowoomba-qld` with the type
+  **Integration**, then search for **Bin Collection Toowoomba QLD**, select
+  **Download** and restart Home Assistant.
+
+If you added it as a custom repository before it joined the default catalog,
+you can leave it as it is; it keeps receiving the same releases.
+
+**Manual install (no Marketplace or HACS).** Copy
 `custom_components/bin_collection_toowoomba_qld` into your Home Assistant
-`config/custom_components` folder and restart.
+`config/custom_components` folder and restart. You'll need to repeat this for
+each new release.
+
+</details>
 
 ### Add your property
 

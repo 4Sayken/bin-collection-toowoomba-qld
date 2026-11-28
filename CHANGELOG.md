@@ -2,6 +2,17 @@
 
 All notable changes to Bin Collection Toowoomba QLD are listed here.
 
+## [1.3.1] - 2026-11-28
+
+### Changed
+
+- Bin Collection Toowoomba QLD is now in the Marketplace's default catalog
+  (and HACS's default list), so you can install it by searching, with no custom
+  repository needed. The README's install steps now describe this, the badge
+  says **Marketplace: Default**, and the custom-repository and manual install
+  steps moved to a collapsed **Other ways to install** section.
+- No changes to how the integration works.
+
 ## [1.3.0] - 2026-11-26
 
 ### Changed
@@ -52,6 +63,7 @@ All notable changes to Bin Collection Toowoomba QLD are listed here.
   for the next collection, which bins go out, days until collection, and
   recycling week, green waste week and bins out binary sensors.
 
+[1.3.1]: https://github.com/4Sayken/bin-collection-toowoomba-qld/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/4Sayken/bin-collection-toowoomba-qld/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/4Sayken/bin-collection-toowoomba-qld/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/4Sayken/bin-collection-toowoomba-qld/compare/v1.0.0...v1.1.0
